@@ -28,11 +28,22 @@ class _TripListState extends State<TripList> {
       Trip(title: 'Space Blast', price: '600', nights: '4', img: 'space.png'),
     ];
 
-    _trips.forEach((Trip trip) {
-      _tripTiles.add(_buildTile(trip));
-      _listKey.currentState.insertItem(_tripTiles.length - 1);
-    });
+    _loadTrips(_trips, 0);
   }
+
+  _loadTrips(List _trips,index) async {
+    if (index >= _trips.length) {
+      return;
+    }
+    Trip trip = _trips[index];
+    _tripTiles.add(_buildTile(trip));
+    _listKey.currentState.insertItem(index,duration: Duration(milliseconds: 200));
+    await Future.delayed(Duration(milliseconds: 200));
+    _loadTrips(_trips, index+1);
+  }
+
+
+
 
   Widget _buildTile(Trip trip) {
     return ListTile(
