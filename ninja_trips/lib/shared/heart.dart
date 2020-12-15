@@ -59,9 +59,12 @@ class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
     return AnimatedBuilder(
       animation: _controller,
       builder: (BuildContext context, _){
+            print("_colorAnimation.value ${_colorAnimation.value}");
+    print("_sizeAnimation.value ${_sizeAnimation.value}");
         return IconButton(
           icon: Icon(
             Icons.favorite,
