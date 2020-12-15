@@ -5,6 +5,7 @@ class Heart extends StatefulWidget {
   _HeartState createState() => _HeartState();
 }
 
+// 控制播放过程和状态
 class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
   bool isFav = false;
   AnimationController _controller;
@@ -43,8 +44,8 @@ class _HeartState extends State<Heart> with SingleTickerProviderStateMixin {
   // dismiss the animation when widgit exits screen
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
